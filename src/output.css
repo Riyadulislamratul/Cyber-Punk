@@ -11,7 +11,11 @@
       "Courier New", monospace;
     --color-white: #FFFFFF;
     --spacing: 0.25rem;
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --font-weight-medium: 500;
     --font-weight-semibold: 600;
+    --font-weight-bold: 700;
     --radius-xl: 0.75rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
@@ -172,8 +176,29 @@
   }
 }
 @layer utilities {
+  .absolute {
+    position: absolute;
+  }
   .relative {
     position: relative;
+  }
+  .top-\[13px\] {
+    top: 13px;
+  }
+  .top-\[40\%\] {
+    top: 40%;
+  }
+  .top-\[49\%\] {
+    top: 49%;
+  }
+  .-right-\[146px\] {
+    right: calc(146px * -1);
+  }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
+  .left-12 {
+    left: calc(var(--spacing) * 12);
   }
   .container {
     width: 100%;
@@ -197,8 +222,23 @@
     margin-inline: auto;
     padding-inline: 2.815rem;
   }
+  .-mt-\[212px\] {
+    margin-top: calc(212px * -1);
+  }
   .flex {
     display: flex;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-\[300px\] {
+    max-width: 300px;
+  }
+  .max-w-\[344px\] {
+    max-width: 344px;
+  }
+  .max-w-\[862px\] {
+    max-width: 862px;
   }
   .cursor-pointer {
     cursor: pointer;
@@ -221,63 +261,61 @@
   .py-\[52px\] {
     padding-block: 52px;
   }
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
+  }
+  .pb-4 {
+    padding-bottom: calc(var(--spacing) * 4);
+  }
+  .pl-5 {
+    padding-left: calc(var(--spacing) * 5);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .font-montserrat {
+    font-family: var(--font-montserrat);
+  }
+  .font-orbitron {
+    font-family: var(--font-orbitron);
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-\[24px\] {
+    font-size: 24px;
+  }
+  .text-\[36px\] {
+    font-size: 36px;
+  }
+  .text-\[180px\] {
+    font-size: 180px;
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .after\:absolute {
-    &::after {
-      content: var(--tw-content);
-      position: absolute;
-    }
-  }
-  .after\:bottom-0 {
-    &::after {
-      content: var(--tw-content);
-      bottom: calc(var(--spacing) * 0);
-    }
-  }
-  .after\:left-0 {
-    &::after {
-      content: var(--tw-content);
-      left: calc(var(--spacing) * 0);
-    }
-  }
-  .after\:h-px {
-    &::after {
-      content: var(--tw-content);
-      height: 1px;
-    }
-  }
-  .after\:w-full {
-    &::after {
-      content: var(--tw-content);
-      width: 100%;
-    }
-  }
-  .after\:bg-linear-to-r {
-    &::after {
-      content: var(--tw-content);
-      --tw-gradient-position: to right;
-      @supports (background-image: linear-gradient(in lab, red, red)) {
-        --tw-gradient-position: to right in oklab;
-      }
-      background-image: linear-gradient(var(--tw-gradient-stops));
-    }
-  }
-  .after\:from-orange-71F {
-    &::after {
-      content: var(--tw-content);
-      --tw-gradient-from: var(--color-orange-71F);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
-  }
-  .after\:to-red-609 {
-    &::after {
-      content: var(--tw-content);
-      --tw-gradient-to: var(--color-red-609);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
   }
 }
 @layer base {
@@ -289,6 +327,15 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-orbitron);
     color: var(--color-primary);
+  }
+  p {
+    font-size: 18px;
+    --tw-leading: calc(var(--spacing) * 8);
+    line-height: calc(var(--spacing) * 8);
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+    --tw-tracking: calc(0.2px * -1);
+    letter-spacing: calc(0.2px * -1);
   }
 }
 @layer components {
@@ -308,7 +355,7 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
-  .linear_button {
+  .linear_after {
     &::after {
       content: var(--tw-content);
       position: absolute;
@@ -348,6 +395,10 @@
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
   }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-shadow {
   syntax: "*";
@@ -414,9 +465,12 @@
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-content {
+@property --tw-leading {
   syntax: "*";
-  initial-value: "";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
   inherits: false;
 }
 @property --tw-gradient-position {
@@ -461,13 +515,15 @@
   inherits: false;
   initial-value: 100%;
 }
-@property --tw-font-weight {
+@property --tw-content {
   syntax: "*";
+  initial-value: "";
   inherits: false;
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
@@ -482,7 +538,8 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-content: "";
+      --tw-leading: initial;
+      --tw-tracking: initial;
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;
       --tw-gradient-via: #0000;
@@ -492,7 +549,7 @@
       --tw-gradient-from-position: 0%;
       --tw-gradient-via-position: 50%;
       --tw-gradient-to-position: 100%;
-      --tw-font-weight: initial;
+      --tw-content: "";
     }
   }
 }

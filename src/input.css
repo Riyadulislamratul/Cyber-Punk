@@ -36,13 +36,16 @@
             font-family: var(--font-orbitron);
             color: var(--color-primary);
     }
+    p{
+        @apply text-[18px] font-medium leading-8 -tracking-[0.2px];
+    }
 }
 
 @layer components {
     .linear_button{
         @apply bg-linear-to-r from-orange-71F to-red-609 text-[17px] font-semibold px-5 py-3 rounded-xl ;
     }   
-    .linear_button{
+    .linear_after{
         @apply after:absolute after:h-px after:w-full after:bg-linear-to-r after:from-orange-71F after:to-red-609 after:bottom-0 after:left-0 ;
     }   
 }
